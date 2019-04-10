@@ -5,8 +5,8 @@ from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 
-def login(request):
-    print("hello")
+def login_view(request):
+
     if request.user.is_authenticated:
         return redirect('/profile')
     if request.method == 'POST':
@@ -25,4 +25,4 @@ def login(request):
 
 def logout_view(request):
     logout(request)
-    return redirect(request, 'completed.html')
+    return render(request, 'login.html')
