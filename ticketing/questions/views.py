@@ -7,6 +7,15 @@ from .models import Question
 
 def pending_questions(request):
     context = {}
+
+    if request.method == "POST":
+        form = QuestionForm(data=request.POST)
+        if form.is_valid():
+            post_question = form.save(commit=False)
+            new_question = Question(title=post_question.title, description=post_question.description,
+                                    author=request.user)
+            new_question.save()
+
     form = QuestionForm
     questions_pending = Question.objects.filter(status=False).order_by("date_asked")
     questions_completed = Question.objects.filter(status=True).order_by("date_answered")[:5]
