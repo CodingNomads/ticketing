@@ -2,8 +2,20 @@
 
 {% block content %}
 
-    <form method="post" action="{% url: 'questions:pending_questions' %}">
-    {{ form.as_p }}
+
+
+    <form method="post" action="{% url 'questions:pending_questions' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name='submit_question' type="submit">Add question</button>
     </form>
+
+    {% for question in questions_pending %}
+        {{question.author.name}}
+        {{question.title}}
+        {{question.description}}
+        {{question,date_added}}
+    {% endfor %}
+
 
 {% endblock %}

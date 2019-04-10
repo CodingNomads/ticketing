@@ -8,7 +8,7 @@ from .models import Question
 def pending_questions(request):
     context = {}
     form = QuestionForm
-    questions_pending = Question.objects.filter(status=False)
+    questions_pending = Question.objects.filter(status=False).order_by("date_added")
     questions_completed = Question.objects.filter(status=True).order_by("date_answered")[:10]
 
 
