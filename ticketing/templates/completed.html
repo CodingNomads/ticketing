@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<legend class="">
+<legend class="border-bottom mb-4">
     <h2>These have been answered!</h2>
 </legend>
 
 
         {% for question in questions %}
+
             <article class="media content-section">
+
               <div class="media-body">
-                <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ question.author }}</a>
+                <div class="article-metadata border-bottom mb-4">
+                 <!--<img class="rounded-circle" src="{{users.profile.picture.url}}" alt="profile picture" width="100%">    -->
+                  Asked by: <a class="mr-2" href="#">{{ question.author }}</a>
                   <small class="text-muted">{{ question.date_asked|date:"F d, Y" }}</small>
                 </div>
-                <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
-                <p class="article-content">{{ question.replier }}</p>
+                  <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
+                <div class="article-metadata border-bottom mb-4">
+                    Answered by: <a class="mr-2" href="#">{{ question.replier }}</a>
                   <small class="text-muted">{{ question.date_answered|date:"F d, Y" }}</small>
+                </div>
               </div>
+
             </article>
+
+        <br>
         {% endfor %}
 
 {% endblock%}
