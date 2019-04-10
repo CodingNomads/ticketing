@@ -5,19 +5,13 @@
 <div class="container">
     <h1>Latest answered questions</h1>
     {% for question in questions_completed %}
-        <div class="row">
-            <div class="col-sm">
-            {{question.author}}
-            </div>
-            <div class="col-sm">
-            {{question.title}}
-            </div>
-            <div class="col-sm">
-            {{question.description}}
-            </div>
-            <div class="col-sm">
-            {{question.date_asked}}
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{question.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{question.author}} - {{question.date_asked}}</h6>
+            <p class="card-text">{{question.description}}</p>
+            <a href="{{question.lmgtfy}}" class="card-link">LMGTFY</a>
+          </div>
         </div>
     <br>
     {% endfor %}
