@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import QuestionForm
 from .models import Question
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
