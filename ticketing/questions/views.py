@@ -17,3 +17,9 @@ def pending_questions(request):
     context["questions_completed"] = questions_completed
 
     return render(request, "pending_questions.html", context=context)
+
+def completed(request):
+    questions = Question.objects.filter(status=True)
+    context = {"questions": questions}
+    return render(request, "completed.html", context)
+
