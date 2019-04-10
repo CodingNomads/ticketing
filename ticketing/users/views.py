@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 
@@ -12,17 +12,17 @@ def login(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)
         if login_form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('/profile')
         else:
-            return render(request, 'login.html', {'form': form})
+            return render(request, 'login.html', {'form': login_form})
     else:
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
 
-def logout(request):
+def logout_view(request):
     logout(request)
-    return render('/login')
+    return redirect(request, 'completed.html')
