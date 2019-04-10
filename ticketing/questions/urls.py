@@ -6,5 +6,5 @@ app_name="questions"
 urlpatterns = [
 
     path('', views.completed, name="completed"),
-
+    path('users/', include("users.urls"))
 ]

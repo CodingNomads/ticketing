@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from users.models import User 
+
 
 
 # Create your views here.
@@ -26,3 +28,9 @@ def login(request):
 def logout(request):
     logout(request)
     return render('/login')
+
+def userprofile(request):
+    user = User.objects.get(id=3)
+    context = {user:'user'}
+    return render(request, "profile.html", context)
+
