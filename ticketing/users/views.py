@@ -10,7 +10,7 @@ from questions.models import Question
 def login_view(request):
 
     if request.user.is_authenticated:
-        return redirect('/profile')
+        return redirect('/users/profile')
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)
         if login_form.is_valid():
@@ -18,7 +18,7 @@ def login_view(request):
             password = login_form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/profile')
+            return redirect('/users/profile')
         else:
             return render(request, 'login.html', {'form': login_form})
     else:
