@@ -1,21 +1,59 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 
 {% block content %}
 
+<div class="container">
+    <h1>Latest answered questions</h1>
+    {% for question in questions_completed %}
+        <div class="row">
+            <div class="col-sm">
+            {{question.author}}
+            </div>
+            <div class="col-sm">
+            {{question.title}}
+            </div>
+            <div class="col-sm">
+            {{question.description}}
+            </div>
+            <div class="col-sm">
+            {{question.date_asked}}
+            </div>
+        </div>
+    <br>
+    {% endfor %}
+</div>
 
 
+<div class="container">
+    <h1>Ask a question</h1>
     <form method="post" action="{% url 'questions:pending_questions' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button name='submit_question' type="submit">Add question</button>
     </form>
+</div>
 
+<div class="container">
+    <h1>Pending questions</h1>
     {% for question in questions_pending %}
-        {{question.author.name}}
-        {{question.title}}
-        {{question.description}}
-        {{question,date_added}}
+        <div class="row">
+            <div class="col-sm">
+            {{question.author.avatar}}
+            </div>
+            <div class="col-sm">
+            {{question.date_asked}}
+            </div>
+            <div class="col-sm">
+            {{question.title}}
+            </div>
+            <div class="col-sm">
+            {{question.description}}
+            </div>
+
+        </div>
+    <br>
     {% endfor %}
+</div>
 
 
 {% endblock %}

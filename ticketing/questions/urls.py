@@ -7,6 +7,6 @@ app_name="questions"
 urlpatterns = [
 
     path('', views.completed, name="completed"),
-    path('', views.pending_questions, name="pending_questions")
+    path('pending', views.pending_questions, name="pending_questions")
 
 ]
