@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+      {% block content %}
+
+User Profile
+
+<H1>{{request.user|upper}} THIS IS YOU</H1>
+<img src="{{request.user.avatar.path}}">
+
+
+   {% for question in questions %}
+            <article class="media content-section">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <small class="text-muted">{{ question.date_asked|date:"F d, Y" }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
+                <p class="article-content">Clever responder: {{ question.replier }}</p>
+                  <small class="text-muted">Answered Date: {{ question.date_answered|date:"F d, Y" }}</small>
+              </div>
+            </article>
+        {% endfor %}
+
+
+
+
+{% endblock %}
+
+
+
+
+<!--<h6>edit_entry.html</h6>-->
+ <!--<p><a href="{% url 'logs:topic' topic.id %}">{{ topic }}</a></p>-->
+
+<!--<form action = "{% url 'logs:edit_entry' entry.id %}" method='post'>-->
+    <!--{% csrf_token %}-->
+    <!--<b>{{form}}</b>-->
+    <!--<button name="submit">save changes</button>-->
+<!--</form>-->

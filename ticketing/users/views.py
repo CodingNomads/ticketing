@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from users.models import User 
+from questions.models import Question
 
 
 # Create your views here.
@@ -26,3 +28,9 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'login.html')
+
+def userprofile(request):
+    current_userid = request.user.id
+    questions = Question.objects.filter(author_id=current_userid)
+    context = {'questions':questions}
+    return render(request, "profile.html", context)
