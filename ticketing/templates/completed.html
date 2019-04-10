@@ -5,7 +5,6 @@
     <h2>These have been answered!</h2>
 </legend>
 
-
         {% for question in questions %}
 
             <article class="media content-section">
@@ -14,12 +13,12 @@
                 <div class="article-metadata border-bottom mb-4">
                  <!--<img class="rounded-circle" src="{{users.profile.picture.url}}" alt="profile picture" width="100%">    -->
                   Asked by: <a class="mr-2" href="#">{{ question.author }}</a>
-                  <small class="text-muted">{{ question.date_asked|date:"F d, Y" }}</small>
+                  <small class="text-muted">{{ question.date_asked|date:"F d, Y I:m" }}</small>
                 </div>
                   <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
                 <div class="article-metadata border-bottom mb-4">
                     Answered by: <a class="mr-2" href="#">{{ question.replier }}</a>
-                  <small class="text-muted">{{ question.date_answered|date:"F d, Y" }}</small>
+                  <small class="text-muted">{{ question.date_answered|date:"F d, Y I:m" }}</small>
                 </div>
               </div>
 
