@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from urllib.parse import urlencode
 from .forms import QuestionForm
 from .models import Question
 from django.contrib.auth.decorators import login_required
@@ -12,8 +13,10 @@ def pending_questions(request):
         form = QuestionForm(data=request.POST)
         if form.is_valid():
             post_question = form.save(commit=False)
+            # add helpful link to help students get started solving their own questions... :)
+            lmgtfy = "http://lmgtfy.com/?" + urlencode({'q': post_question.title})
             new_question = Question(title=post_question.title, description=post_question.description,
-                                    author=request.user)
+                                    author=request.user, lmgtfy=lmgtfy)
             new_question.save()
 
     form = QuestionForm

@@ -11,3 +11,4 @@ class Question(models.Model):
     date_asked = models.DateTimeField(auto_now_add=True)
     date_answered = models.DateTimeField(null=True, blank=True)
     status = models.BooleanField(default=False)
+    lmgtfy = models.CharField(max_length=200, null=True, blank=True)
