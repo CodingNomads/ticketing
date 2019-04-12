@@ -5,6 +5,6 @@ from . import views
 app_name="questions"
 
 urlpatterns = [
-    path('', views.completed, name="completed"),
-    path('pending', views.pending_questions, name="pending_questions")
+    path('', views.pending_questions, name="pending_questions"),
+    path('completed', views.completed, name="completed"),
 ]
