@@ -6,7 +6,7 @@
     <h2>Hello, {{request.user|upper}}!</h2>
     {% load static %}
     <!--  TODO: change the default image to user uploaded avatar image  -->
-    <img src="{% static 'img/default.jpeg' %}" alt="user profile pic">
+    <img src="{% static 'img/default.png' %}" alt="user profile pic">
     <!--    <img src="{{request.user.avatar.path}}">-->
 
     {% for question in questions %}
