@@ -4,6 +4,7 @@
 
 
 {% block content %}
+{% load static %}
 
 <div class="container">
     <h1>Latest answered questions</h1>
@@ -14,7 +15,9 @@
             <h5 class="card-title">{{question.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{question.author}} - {{question.date_asked}}</h6>
             <p class="card-text">{{question.description}}</p>
-            <a href="{{question.lmgtfy}}" target="_blank" class="card-link">LMGTFY</a>
+            <a href="{{question.lmgtfy}}" target="_blank" class="card-link">
+                <img src="{% static 'questions/lmgtfy.png' %}" alt="LMGTFY" style="border-radius: 15px;">
+            </a>
           </div>
         </div>
         {% endfor %}
@@ -40,12 +43,14 @@
         <div class="card border-dark">
             <!--  TODO: change to display the image of the user who asked the question  -->
             {% load static %}
-            <img class="card-img-top" src="{% static 'img/default.jpeg' %}" alt="avatar of student who asked the question">
+            <img class="card-img-top" src="{% static 'users/default.jpeg' %}" alt="avatar of student who asked the question">
           <div class="card-body">
             <h5 class="card-title">{{question.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{question.author}} - {{question.date_asked}}</h6>
             <p class="card-text">{{question.description}}</p>
-            <a href="{{question.lmgtfy}}" class="card-link">LMGTFY</a>
+            <a href="{{question.lmgtfy}}" target="_blank" class="card-link">
+                <img src="{% static 'questions/lmgtfy.png' %}" alt="LMGTFY" style="border-radius: 15px;">
+            </a>
           </div>
         </div>
     <br>
