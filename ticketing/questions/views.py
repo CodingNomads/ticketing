@@ -29,11 +29,11 @@ def pending_questions(request):
     context["questions_pending"] = questions_pending
     context["questions_completed"] = questions_completed
 
-    return render(request, "pending_questions.html", context=context)
+    return render(request, "questions/pending_questions.html", context=context)
 
 
 @login_required(login_url="/users/login/")
 def completed(request):
     questions = Question.objects.filter(status=True)
     context = {"questions": questions}
-    return render(request, "completed.html", context)
+    return render(request, "questions/completed.html", context)

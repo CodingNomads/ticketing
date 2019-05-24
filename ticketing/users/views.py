@@ -16,19 +16,19 @@ def login_view(request):
             login(request, user)
             return redirect('/users/profile')
         else:
-            return render(request, 'login.html', {'form': login_form})
+            return render(request, 'users/login.html', {'form': login_form})
     else:
         form = AuthenticationForm()
-        return render(request, 'login.html', {'form': form})
+        return render(request, 'users/login.html', {'form': form})
 
 
 def logout_view(request):
     logout(request)
-    return render(request, 'login.html')
+    return render(request, 'users/login.html')
 
 
 def userprofile(request):
     current_userid = request.user.id
     questions = Question.objects.filter(author_id=current_userid)
     context = {'questions': questions}
-    return render(request, "profile.html", context)
+    return render(request, "users/profile.html", context)

@@ -1,16 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'questions/base.html' %}
 
 {% block content%}
 <legend class="">
     <h2>These have been answered!</h2>
 </legend>
 
-
         {% for question in questions %}
             <article class="media content-section">
               <div class="media-body">
                 <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ question.author }}</a>
+                  <a class="mr-2" href="{% url 'users:profile' %}">{{ question.author }}</a>
                   <small class="text-muted">{{ question.date_asked|date:"F d, Y" }}</small>
                 </div>
                 <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
