@@ -10,7 +10,7 @@
     <h1>Latest answered questions</h1>
     <div class="form-row">
     {% for question in questions_completed %}
-        <div class="card border-success">
+        <div class="card border-success" style="width: 33.3%;">
           <div class="card-body">
             <h5 class="card-title">{{question.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{question.author}} - {{question.date_asked}}</h6>
@@ -25,25 +25,31 @@
     <br>
 </div>
 
+<hr>
 
 <div class="container">
     <h1>Ask a question</h1>
     <div class="form-row">
-        <form method="post" action="{% url 'questions:pending_questions' %}">
+        <form method="post" action="{% url 'questions:pending_questions' %}" style="width: 100%;">
             {% csrf_token %}
             {{ form|crispy }}
-            <button name='submit_question' type="submit">Add question</button>
+            <button type="button" class="btn btn-success" name='submit_question' style="width: 100%;">Add question</button>
         </form>
     </div>
 </div>
 
+<hr>
+
 <div class="container">
     <h1>Pending questions</h1>
     {% for question in questions_pending %}
-        <div class="card border-dark">
-            <!--  TODO: change to display the image of the user who asked the question  -->
-            {% load static %}
-            <img class="card-img-top" src="{% static 'users/default.png' %}" alt="avatar of student who asked the question">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <!--  TODO: change to display the image of the user who asked the question  -->
+          <img src="{% static 'users/default.png' %}" class="card-img" alt="avatar of student who asked the question">
+        </div>
+        <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">{{question.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{question.author}} - {{question.date_asked}}</h6>
@@ -53,6 +59,8 @@
             </a>
           </div>
         </div>
+      </div>
+    </div>
     <br>
     {% endfor %}
 </div>
