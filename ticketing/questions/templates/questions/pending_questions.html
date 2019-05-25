@@ -33,7 +33,7 @@
         <form method="post" action="{% url 'questions:pending_questions' %}" style="width: 100%;">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="button" class="btn btn-success" name='submit_question' style="width: 100%;">Add question</button>
+            <button type="submit" class="btn btn-success" name='submit_question' style="width: 100%;">Add question</button>
         </form>
     </div>
 </div>
