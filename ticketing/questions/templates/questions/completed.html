@@ -1,23 +1,37 @@
 {% extends 'questions/base.html' %}
 
 {% block content%}
+{% load static %}
 <legend class="">
     <h2>These questions have already been answered.</h2>
-    <p>Check whether one of them answers your question.</p>
+    <p>Check whether one of them helps you forward and speak to the person who has the answer now.</p>
 </legend>
 
         {% for question in questions %}
-            <article class="media content-section">
-              <div class="media-body">
-                <div class="article-metadata">
-                  <a class="mr-2" href="{% url 'users:profile' %}">{{ question.author }}</a>
-                  <small class="text-muted">{{ question.date_asked|date:"F d, Y" }}</small>
-                </div>
-                <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
-                <p class="article-content">{{ question.replier }}</p>
-                  <small class="text-muted">{{ question.date_answered|date:"F d, Y" }}</small>
-              </div>
-            </article>
+<!-- TODO: add user images of question asker and answerer to make it easier to find the relevant students -->
+        <div class="card border-success mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{question.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+<!--   TODO: replace with link to actual user who asked the question -->
+                <a class="mr-2" href="{% url 'users:profile' %}">
+                    {{ question.author }}
+                </a>- {{question.date_asked|date:"F d, Y" }}</h6>
+            <p class="card-text">{{question.description}}</p>
+            <p class="article-content text-success">
+                Answered by:
+<!--   TODO: replace with link to actual user who answered the question -->
+                <a class="mr-2" href="{% url 'users:profile' %}">
+                    {{ question.replier }}
+                </a>on {{ question.date_answered|date:"F d, Y" }}
+            </p>
+<!--   TODO: maybe add the LMGTFY link so students can check up on results that lead to success        -->
+<!--            <a href="{{question.lmgtfy}}" target="_blank" class="card-link">-->
+<!--                <img src="{% static 'questions/lmgtfy.png' %}" alt="LMGTFY" style="border-radius: 15px;">-->
+<!--            </a>-->
+          </div>
+        </div>
+
         {% endfor %}
 
 {% endblock%}
