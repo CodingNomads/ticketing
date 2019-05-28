@@ -4,7 +4,9 @@
 {% load static %}
 <legend class="">
     <h2>These questions have already been answered.</h2>
-    <p>Check whether one of them helps you forward and speak to the person who has the answer now.</p>
+    <div class="alert alert-success" role="alert">
+        Check whether one of them can help you. Speak to the person who asked or answered that question.
+    </div>
 </legend>
 
         {% for question in questions %}
