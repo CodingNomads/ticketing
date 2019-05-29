@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from urllib.parse import urlencode
 from .forms import QuestionForm
 from .models import Question
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
-# Create your views here.
 
+@login_required(login_url="/users/login/")
 def pending_questions(request):
     context = {}
 
@@ -18,20 +19,21 @@ def pending_questions(request):
             new_question = Question(title=post_question.title, description=post_question.description,
                                     author=request.user, lmgtfy=lmgtfy)
             new_question.save()
+            return HttpResponseRedirect(reverse('questions:completed'))
 
     form = QuestionForm
     questions_pending = Question.objects.filter(status=False).order_by("date_asked")
     questions_completed = Question.objects.filter(status=True).order_by("date_answered")[:5]
 
-
     context["form"] = form
     context["questions_pending"] = questions_pending
     context["questions_completed"] = questions_completed
 
-    return render(request, "pending_questions.html", context=context)
+    return render(request, "questions/pending_questions.html", context=context)
 
+
+@login_required(login_url="/users/login/")
 def completed(request):
     questions = Question.objects.filter(status=True)
     context = {"questions": questions}
-    return render(request, "completed.html", context)
-
+    return render(request, "questions/completed.html", context)

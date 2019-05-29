@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Coding Nomads Ticketing Extravaganza</title>
+    <title>CodingNomads Ticketing Extravaganza</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,18 +27,25 @@
           <!-- Shows up only if user is authenticated -->
 
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="/">Ask</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/completed">Answered</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
         {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'users:logout' %}">Log Out Nomad</a>
+              <a class="nav-link" href="{% url 'users:logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/profile">Profile</a>
             </li>
         {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'users:login' %}">Log In</a>
             </li>
         {% endif %}
-
         </ul>
       </div>
     </nav>
