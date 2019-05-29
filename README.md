@@ -27,7 +27,7 @@ in the Python Bali 2019 course by:
 * [Melissa Fear](https://github.com/melissafear)
 * [Daniel Wegmann](https://github.com/daniel10012)
 * [Ming Yan](https://github.com/mingyyy)
-* [Robert-Jan Lub](https://github.com/lubcountcooper)
+* [Robert-Jan Lub](https://github.com/luckylub)
 * [Blake Leżeński](https://github.com/BlakeBeyond)
 * [Sadie Parker](https://github.com/spacerest)
 * [Martin Breuss](https://github.com/martin-martin)
